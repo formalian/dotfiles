@@ -3,17 +3,46 @@ call plug#begin()
 
 Plug 'tpope/vim-sensible'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'Valloric/YouCompleteMe'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-scripts/indentpython'
+Plug 'vim-syntastic/syntastic'
 
 call plug#end()
 
-" Other stuff
+" You Complete Me
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" Global stuff
 colorscheme dracula
+syntax on
+let mapleader=" "
+
+" Clipboard
+set clipboard=unnamed
+
+" Tabs
 set tabstop=4
+set softtabstop=4
 set shiftwidth=4
 set expandtab
+set autoindent
+
+" Mouse handling
 set mouse=a
+
+" File format
+set fileformat=unix
+set encoding=utf-8
+
+" Line numbers
 set number
+
+" Ensure lines are not longer thant 80 characters
+set textwidth=79
 
 " Better tab experience
 map <leader>tn :tabnew<cr>
@@ -21,5 +50,20 @@ map <leader>tm :tabmove
 map <leader>tc :tabclose<cr>
 map <leader>to :tabonly<cr>
 
-" Ctrl + P
+" Better split experience
+set splitbelow
+set splitright
+map <leader>t <C-W><C-J>
+map <leader>b <C-W><C-K>
+map <leader>r <C-W><C-L>
+map <leader>l <C-W><C-H>
+
+" Open terminal
+map <C-t> :terminal<cr>i
+
+" Ctrl + P to Fuzzy File Finder
 map <C-p> :FZF<cr>
+
+" Python stuff
+let python_highlight_all=1
+let g:python3_host_prog = '/home/lucas/.pyenv/versions/vim/bin/python3'
