@@ -5,6 +5,7 @@ Plug 'tpope/vim-sensible'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'tpope/vim-fugitive'
 Plug 'Valloric/YouCompleteMe'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/indentpython'
@@ -53,13 +54,14 @@ map <leader>to :tabonly<cr>
 " Better split experience
 set splitbelow
 set splitright
-map <leader>t <C-W><C-J>
-map <leader>b <C-W><C-K>
-map <leader>r <C-W><C-L>
-map <leader>l <C-W><C-H>
+map <C-k> <C-W><C-J>
+map <C-i> <C-W><C-K>
+map <C-l> <C-W><C-L>
+map <C-j> <C-W><C-H>
 
-" Open terminal
+" Better terminal experience
 map <C-t> :terminal<cr>i
+tnoremap <Esc> <C-\><C-n>
 
 " Ctrl + P to Fuzzy File Finder
 map <C-p> :FZF<cr>
