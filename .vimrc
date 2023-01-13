@@ -9,6 +9,7 @@ Plug 'preservim/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'Valloric/YouCompleteMe'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-syntastic/syntastic'
 Plug 'ryanoasis/vim-devicons'
@@ -90,6 +91,7 @@ let NERDTreeShowHidden=1
 " Airline stuff
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+let g:airline_theme=deus
 
 " Python stuff
 let g:python3_host_prog = '/home/lucas/.pyenv/versions/vim/bin/python3'
