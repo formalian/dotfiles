@@ -63,10 +63,10 @@ map <leader>to :tabonly<cr>
 " Better split experience
 set splitbelow
 set splitright
-map <C-k> <C-W><C-J>
-map <C-i> <C-W><C-K>
+map <C-j> <C-W><C-J>
+map <C-k> <C-W><C-K>
 map <C-l> <C-W><C-L>
-map <C-j> <C-W><C-H>
+map <C-h> <C-W><C-H>
 
 " Better terminal experience
 map <C-t> :terminal<cr>i
