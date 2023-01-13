@@ -5,6 +5,7 @@ Plug 'tpope/vim-sensible'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'preservim/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'Valloric/YouCompleteMe'
 Plug 'vim-airline/vim-airline'
@@ -65,6 +66,12 @@ tnoremap <Esc> <C-\><C-n>
 
 " Ctrl + P to Fuzzy File Finder
 map <C-p> :FZF<cr>
+
+" NerdTree stuff
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+map <C-n> :NERDTreeToggle<cr>
+let NERDTreeShowHidden=1
 
 " Python stuff
 let python_highlight_all=1
