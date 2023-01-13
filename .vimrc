@@ -91,7 +91,6 @@ let NERDTreeShowHidden=1
 " Airline stuff
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme=deus
 
 " Python stuff
 let g:python3_host_prog = '/home/lucas/.pyenv/versions/vim/bin/python3'
