@@ -10,14 +10,29 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 # ENABLE_CORRECTION="true"
 
 # OMZ Plugins
-plugins=(
-	fzf
-	git 
-	python 
-	yarn 
-	z
-	zsh-syntax-highlighting 
-)
+
+if [[ $TERM_PROGRAM != tmux ]] then
+    plugins=(
+	    fzf
+	    git 
+	    pip
+    	python
+	    yarn 
+	    z
+        zsh-autosuggestions
+	    zsh-syntax-highlighting 
+    )
+else
+    plugins=(
+	    fzf
+	    git 
+    	pip
+    	python
+    	yarn 
+    	z
+    	zsh-syntax-highlighting 
+    )
+fi
 
 source $ZSH/oh-my-zsh.sh
 
