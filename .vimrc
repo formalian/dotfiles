@@ -1,17 +1,25 @@
 " Vim plug stuff
 call plug#begin()
 
+" Theme
 Plug 'ayu-theme/ayu-vim'
+
+" Development
 Plug 'tpope/vim-sensible'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'preservim/nerdtree'
 Plug 'tpope/vim-fugitive'
-Plug 'Valloric/YouCompleteMe'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-syntastic/syntastic'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ervandew/supertab'
+
+" Interface
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'preservim/nerdtree'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'Yggdroot/indentLine'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
@@ -52,8 +60,8 @@ set encoding=utf-8
 " Line numbers
 set number
 
-" Ensure lines are not longer thant 80 characters
-set textwidth=79
+" Ensure lines are not longer than 100 characters
+set textwidth=100
 
 " Better tab experience
 map <leader>tn :tabnew<cr>
@@ -73,12 +81,6 @@ map <C-h> <C-W><C-H>
 map <C-t> :terminal<cr>i
 tnoremap <Esc> <C-\><C-n>
 
-" You Complete Me
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-let g:ycm_key_list_select_completion = ['<TAB>']
-let g:ycm_key_list_previous_completion = ['<S-TAB>']
-
 " Ctrl + P to Fuzzy File Finder
 map <C-p> :FZF<cr>
 
@@ -94,3 +96,18 @@ let g:airline_powerline_fonts = 1
 
 " Python stuff
 let g:python3_host_prog = '/home/lucas/.pyenv/versions/vim/bin/python3'
+
+" IndentLine
+let g:indentLine_setColors = 1
+let g:indentLine_setConceal = 0
+
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
+
+" zoom a vim pane, <C-w>= to re-balance
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
+
+" Accept coc selection with <cr>
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
