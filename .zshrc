@@ -39,7 +39,7 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Load environment when tmux is not started yet
+# Load environment when tmux is not started yet and nvm only in tmux
 if [[ $TERM_PROGRAM != tmux ]]; then
 
     # Environment variables
@@ -55,11 +55,14 @@ if [[ $TERM_PROGRAM != tmux ]]; then
     eval "$(pyenv init -)"
     eval "$(pyenv init --path)"
 
+else
+
+    # Nvm
+    export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
 fi
 
-# Nvm
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
     
 
 # Aliases
