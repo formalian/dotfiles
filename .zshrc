@@ -40,7 +40,7 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 # Load environment when tmux is not started yet
-if [[ $TERM_PROGRAM != 'tmux' ]]; then
+if [[ $TERM_PROGRAM != tmux ]]; then
 
     # Environment variables
     export FZF_DEFAULT_COMMAND='rg --files --hidden --smart-case --follow --glob "!.git/*"'
@@ -48,17 +48,19 @@ if [[ $TERM_PROGRAM != 'tmux' ]]; then
     export PYENV_ROOT="$HOME/.pyenv"
     export PYENV_VIRTUALENV_DISABLE_PROMPT=1
     export PATH="$HOME/.scripts:$PATH"
-fi
 
-# Pyenv
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv init --path)"
-    
+
+    # Pyenv
+    command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+    eval "$(pyenv init --path)"
+
+fi
 
 # Nvm
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+    
 
 # Aliases
 alias vim="nvim"
@@ -68,7 +70,7 @@ alias fp="fzf --preview 'batcat --style=numbers --color=always --line-range :500
 
 # Start tmux by default
 if [[ -z "$TMUX" ]]; then
-   tat
+    tat
 fi
 
 # Starship prompt
